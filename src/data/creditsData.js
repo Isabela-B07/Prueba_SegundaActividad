@@ -1,4 +1,4 @@
-// src/data/creditsData.js
+// Array de objetos
 export const credits = [
   {
     id: 1,

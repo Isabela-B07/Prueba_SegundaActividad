@@ -1,4 +1,4 @@
-// src/pages/Simulador.jsx
+//Importaciones
 import React, { useState, useMemo } from "react";
 import Hero from "../components/Hero";
 import Footer from "../components/Footer";
@@ -7,33 +7,37 @@ import creditsData from "../data/creditsData";
 import "../styles/simulador.css";
 
 function Simulador() {
-  const [nombreSeleccionado, setNombreSeleccionado] = useState("");
-  const [montoMin, setMontoMin] = useState(0);
-  const [montoMax, setMontoMax] = useState(999999999);
-  const [tasaOrden, setTasaOrden] = useState("");
+  //Estados
+  const [nombreSeleccionado, setNombreSeleccionado] = useState(""); //Guarda el nombre del crédito que el usuario elige en el select
+  const [montoMin, setMontoMin] = useState(0); //Guarda el monto mínimo que el usuario escoge
+  const [montoMax, setMontoMax] = useState(999999999); //Guarda el monto máximo elegido
+  const [tasaOrden, setTasaOrden] = useState(""); //Guarda cómo quiere ordenar el usuario:
 
   // Select de nombres
   const nombresDisponibles = useMemo(
-    () => Array.from(new Set(creditsData.map((c) => c.nombre))),
+    () => Array.from(new Set(creditsData.map((c) => c.nombre))), //Saca todos los nombres
     []
   );
 
-  // Select de montos basado en minAmount y maxAmount
+  // Select de montos disponibles
+  //Recorre los créditos, extrae los min y max, y los ordena de menor a mayor
   const montosDisponibles = useMemo(() => {
-    const valores = [];
-    creditsData.forEach((c) => {
-      valores.push(c.minAmount);
-      valores.push(c.maxAmount);
+    const valores = []; //Crea el arreglo de valores, para guardar los montos
+    creditsData.forEach((c) => {//Recorre todos los créditos dentro de credisData
+      valores.push(c.minAmount); //Cada crédito se llama c (Guarda los min)
+      valores.push(c.maxAmount); //Guarda los max
     });
 
-    return Array.from(new Set(valores)).sort((a, b) => a - b);
+    return Array.from(new Set(valores)).sort((a, b) => a - b); //Orena los números de menor a mayor
   }, []);
 
   // ---- FILTRADO ----
   const filtrarCreditos = () => {
-    let resultados = [...creditsData];
+    let resultados = [...creditsData]; //Crea una copia del array, para no cambiar los datos originales
 
     // Filtrar por nombre
+    //Revisa si el usuario seleccionó un nombre de crédito
+    //toma la copia de todos los créditos y solo deja los que tienen el mismo nombre que eligió el usuario.
     if (nombreSeleccionado) {
       resultados = resultados.filter(
         (c) => c.nombre === nombreSeleccionado
@@ -53,9 +57,10 @@ function Simulador() {
     return resultados;
   };
 
-  const resultados = filtrarCreditos();
+  const resultados = filtrarCreditos(); //Llama la función
 
   // ---- LIMPIAR FILTROS ----
+  // Restablece los filtros a sus valores iniciales
   const limpiarFiltros = () => {
     setNombreSeleccionado("");
     setMontoMin(0);
@@ -81,14 +86,14 @@ function Simulador() {
 
           {/* Buscar por nombre */}
           <div className="filtro">
-            <label htmlFor="nombre">Buscar por nombre</label>
+            <label htmlFor="nombre">Buscar por nombre</label> {/*Conecta esta etiqueta con el <select> que tiene */}
             <select
               id="nombre"
-              value={nombreSeleccionado}
-              onChange={(e) => setNombreSeleccionado(e.target.value)}
+              value={nombreSeleccionado} //Está ligado al estado nombreSelccionado
+              onChange={(e) => setNombreSeleccionado(e.target.value)} //Cada vez que se selecciona algo diferente, se actualiza el estado
             >
               <option value="">Seleccione una opción</option>
-              {nombresDisponibles.map((n, i) => (
+              {nombresDisponibles.map((n, i) => ( 
                 <option key={i} value={n}>{n}</option>
               ))}
             </select>

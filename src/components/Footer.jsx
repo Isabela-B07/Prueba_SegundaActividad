@@ -1,8 +1,8 @@
-// src/components/Footer.jsx
 import React from "react";
-import "../styles/footer.css";
+import "../styles/footer.css"; //Para importar los estilos específicos del footer.
 
-function Footer() {
+//Declaración del componente
+function Footer() { // El JSX dentro del return es lo que se va a mostrar en pantalla
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -61,4 +61,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default Footer; // Permite importar Footer en cualquier página, como Home, Simulator, etc.

@@ -1,22 +1,26 @@
+//Importaciones
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import "../styles/solicitar.css";
 
+// Estados del formulario de solicitud de crédito
+// Cada useState guarda un dato o control del formulario
 const RequestCredit = () => {
-  const [nombre, setNombre] = useState("");
+  const [nombre, setNombre] = useState(""); //Para que cambie de estar vacio a lleno (onChange)
   const [cedula, setCedula] = useState("");
   const [monto, setMonto] = useState("");
   const [plazo, setPlazo] = useState("");
   const [correo, setCorreo] = useState("");
   const [telefono, setTelefono] = useState("");
 
-  const [errors, setErrors] = useState({});
-  const [cuota, setCuota] = useState(null);
+  // Estados auxiliares
+  const [errors, setErrors] = useState({}); // Errores de validación
+  const [cuota, setCuota] = useState(null); // Cálculo de la cuota
   const [resumenVisible, setResumenVisible] = useState(false);
-  const [solicitudes, setSolicitudes] = useState([]);
-  const [success, setSuccess] = useState(false);
+  const [solicitudes, setSolicitudes] = useState([]); // Historial de solicitudes
+  const [success, setSuccess] = useState(false); // Indica si la solicitud fue exitosa
 
   // VALIDACIONES EN TIEMPO REAL
   const validate = (field, value) => {
