@@ -60,13 +60,13 @@ Desarrollar una aplicación web dinámica utilizando React para la gestión, sim
 ## Capturas de pantalla de la página
 
 ### Página Principal
-![Home](./Home.gif)
+![Home](public/img/Home.gif)
 
 ### Simulador
-![Simulator](./Simulator.gif)
+![Simulator](public/img/Simulator.gif)
 
 ### Solicitud de Crédito
-![Request Credit](./RequestCredit.gif)
+![RequestCredit](public/img/RequestCredit.gif)
 
 
 
