@@ -114,15 +114,27 @@
 .resumen {
   margin-top: 25px;
   padding: 20px;
-  background: #829cdf;
+  background: #8396c7;
   border-radius: 15px;
   border-left: 5px solid #0d288b;
   box-shadow: 0 0 10px rgba(57, 40, 117, 0.2);
+ 
 }
 
 .resumen h3 {
   color: #060f46;
   margin-bottom: 10px;
+}
+
+.resumen p {
+  border-bottom: 1px solid #646e62;
+  padding-bottom: 5px;   /* espacio entre texto y línea */
+  margin-bottom: 8px;    /* espacio entre párrafos */
+}
+
+/* Quita la línea al último párrafo */
+.resumen p:last-child {
+  border-bottom: none;
 }
 
 /* ====== ÉXITO ====== */
