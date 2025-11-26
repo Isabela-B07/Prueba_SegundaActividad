@@ -54,8 +54,21 @@ Desarrollar una aplicación web dinámica utilizando React para la gestión, sim
 
 3. Ejecutar el entorno de desarrollo:
     npm run dev
-    
+
 4. Abrir la URL indicada por la consola (por ejemplo, http://localhost:5173/).
+
+## Capturas de pantalla de la página
+
+### Página Principal
+![Home](./Home.gif)
+
+### Simulador
+![Simulator](./Simulator.gif)
+
+### Solicitud de Crédito
+![Request Credit](./RequestCredit.gif)
+
+
 
 ## Autores
 

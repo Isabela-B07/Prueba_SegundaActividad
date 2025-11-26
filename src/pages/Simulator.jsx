@@ -93,6 +93,8 @@ function Simulador() {
               onChange={(e) => setNombreSeleccionado(e.target.value)} //Cada vez que se selecciona algo diferente, se actualiza el estado
             >
               <option value="">Seleccione una opción</option>
+              
+              {/* se recorre el array y según la opción elegida, este se muestra en el option */}
               {nombresDisponibles.map((n, i) => ( 
                 <option key={i} value={n}>{n}</option>
               ))}
@@ -101,14 +103,14 @@ function Simulador() {
 
           {/* Monto mínimo */}
           <div className="filtro">
-            <label htmlFor="montoMin">Monto mínimo</label>
+            <label htmlFor="montoMin">Monto mínimo</label> {/*Conecta el texto "Monto mínimo" con el <select id="montoMin"> */}
             <select
               id="montoMin"
               value={montoMin}
-              onChange={(e) => setMontoMin(Number(e.target.value))}
+              onChange={(e) => setMontoMin(Number(e.target.value))} //cada vez que el usuario elige un monto, se guarda en el estado como número
             >
               <option value={0}>No mínimo</option>
-              {montosDisponibles.map((m, i) => (
+              {montosDisponibles.map((m, i) => ( //Misma lógica que con nombres preo aplicada a monto
                 <option key={i} value={m}>
                   ${m.toLocaleString()}
                 </option>
@@ -138,8 +140,8 @@ function Simulador() {
             <label htmlFor="tasaOrden">Ordenar por tasa</label>
             <select
               id="tasaOrden"
-              value={tasaOrden}
-              onChange={(e) => setTasaOrden(e.target.value)}
+              value={tasaOrden} //el valor actual del select está controlado por el estado tasaOrden.
+              onChange={(e) => setTasaOrden(e.target.value)} //cuando el usuario elige una opción, se guarda en el estado tasaOrden.
             >
               <option value="">Seleccione una opción</option>
               <option value="asc">Menor a mayor</option>
@@ -150,7 +152,7 @@ function Simulador() {
           <div className="boton-filtros">
             <button
               type="button"
-              onClick={limpiarFiltros}
+              onClick={limpiarFiltros} //cuando el usuario hace clic, se ejecuta la función limpiarFiltros.
               className="btn-secondary"
             >
               Limpiar Filtros
@@ -161,15 +163,15 @@ function Simulador() {
 
       {/* RESULTADOS */}
       <div className="credit-list">
-        {resultados.length > 0 ? (
+        {resultados.length > 0 ? (//Si hay resultados se muestra el bloque, si no, el mensaje
           <>
-            <p className="result-count">
-              Mostrando {resultados.length} resultado
+            <p className="result-count"> {/*Muestra cuántos resultados hay. */}
+              Mostrando {resultados.length} resultado {/*Para el número de resultados */}
               {resultados.length !== 1 && "s"}
             </p>
 
             <div className="credits-grid">
-              {resultados.map((credit) => (
+              {resultados.map((credit) => ( //Recorre el arreglo resultados
                 <CreditCard
                   key={credit.id}
                   nombre={credit.nombre}

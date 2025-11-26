@@ -16,7 +16,8 @@ function CreditCard({ nombre, descripcion, tasa, monto, plazo, imagen }) {
 
       <div className="card-content">
         {/* Muestra el nombre del crédito en un h4 */}
-        <h4>{nombre}</h4>
+        <h4 className="credit-title">{nombre}</h4>
+
         {/*Si existe descripción la muesta en un p */}
         {descripcion && <p className="card-description">{descripcion}</p>}
 
